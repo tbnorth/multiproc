@@ -256,7 +256,7 @@ if __name__ == '__main__':
 
 ## Source
 
-- http://tbnorth.github.io/multiproc
+- https://github.com/tbnorth/multiproc
 - [mp_demo0.py](./mp_demo0.py)
 - [mp_demo1.py](./mp_demo1.py)
 - [mp_demo2.py](./mp_demo2.py)
