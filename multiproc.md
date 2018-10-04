@@ -1,6 +1,6 @@
-# Multi-core processing in Python with Numpy
+# Multi-core processing in Python with NumPy
 
-http://tbnorth.github.io/multiproc
+https://tbnorth.github.io/multiproc/
 
 
 
@@ -16,6 +16,18 @@ http://tbnorth.github.io/multiproc
 - `asyncio` ~= better `threading`<br/>(new in Python 3.4)
 - `multiprocessing` runs separate processes on separate CPU
   cores
+
+
+## Python GIL
+
+You may here / read:
+
+Python has a Global Interpreter Lock (GIL) which
+prevents it from executing code simultaneously.
+
+This **does not** apply to the `multiprocessing`
+module, which uses inter-process communication to
+coordinate separate processes.
 
 
 ## Cheap, disposable, or expensive, persistent
@@ -154,7 +166,7 @@ if __name__ == '__main__':
 ```
 
 
-## Numpy shared array
+## NumPy shared array
 
 ```python
 import numpy as np
@@ -226,7 +238,7 @@ if __name__ == '__main__':
 ```
 
 
-## Numpy shared array
+## NumPy shared array
 
 ```
 14:18 Doing 0-3
