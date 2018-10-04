@@ -8,6 +8,7 @@
     .hide-head h6 {
     display: none;
     }
+
 .reveal code {
     display: inline-block;
     background: #333;
@@ -24,5 +25,13 @@ body {
     }
 
 .reveal section img {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
     border: none;
+    }
+
+.scrollable {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    /* height: 700px; */
     }

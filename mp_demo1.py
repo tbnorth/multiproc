@@ -1,6 +1,6 @@
 import time
 from multiprocessing import Process, JoinableQueue
-from Queue import Empty
+from queue import Empty
 
 
 def proc_queue(queue):
