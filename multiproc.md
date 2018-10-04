@@ -12,18 +12,18 @@ https://tbnorth.github.io/multiproc/
 ## threading / multiprocessing / asyncio
 
 - `threading` allows code to keep running while waiting for
-  file / network / DB input / output
-- `asyncio` ~= better `threading`<br/>(new in Python 3.4)
+  file / network / DB input / output.
+- `asyncio` ~= better `threading`<br/>(new in Python 3.4).
 - `multiprocessing` runs separate processes on separate CPU
-  cores
+  cores.
 
 
 ## Python GIL
 
 You may here / read:
 
-Python has a Global Interpreter Lock (GIL) which
-prevents it from executing code simultaneously.
+“Python has a Global Interpreter Lock (GIL) which
+prevents it from executing code simultaneously.”
 
 This **does not** apply to the `multiprocessing`
 module, which uses inter-process communication to
@@ -44,25 +44,25 @@ coordinate separate processes.
 ## Cheap, disposable, or expensive, persistent
 
 - For really long CPU intensive processes `multiprocessing` start-up
-  cost may be low enough to allow single use processes
+  cost may be low enough to allow single use processes.
 
 
 ## Summary
 
-- IO bound operations, use `threading`
-- small CPU bound operations (< 1-5 sec.), *re-use* processes
-  with `multiprocessing` and communication
-- large CPU bound operations, like processing a folder of
-  images, process reuse doesn't matter
+- IO bound operations, use `threading` (or `asyncio`).
+- Small CPU bound operations (< 1-5 sec.), *re-use* processes
+  with `multiprocessing` and communication,
+- Large CPU bound operations, like processing a folder of
+  images, process reuse doesn't matter.
 
 
 ## multiprocessing / NumPy
 
 - `multiprocessing` uses separate instances of “python.exe”
   which can communicate with **expensive** message passing
-  to move information between processes
+  to move information between processes.
 - NumPy supports shared memory for its arrays, so separate
-  programs can operate on the same data
+  programs can operate on the same data.
 
 
 
@@ -106,7 +106,7 @@ https://abstrusegoose.com/474
 ```python
 import time
 from multiprocessing import Process, JoinableQueue
-from Queue import Empty
+from queue import Empty
 
 def proc_queue(queue):
     while True:
@@ -141,7 +141,6 @@ if __name__ == '__main__':
 
     queue.join()
     print("(main process ends)")
-
 ```
 
 
@@ -164,6 +163,25 @@ if __name__ == '__main__':
 10:49 (sub-process ends)
 10:49 (sub-process ends)
 ```
+
+
+## Sharing an array
+
+```python
+shared_grid = Array('d', rows * cols, lock=False)`
+```
+
+allocates an array of type 'd' (double) with enough
+entries for a rows * cols array.  Then:
+
+```python
+grid = np.frombuffer(shared_grid)
+grid.shape = (rows, cols)
+```
+
+makes a normal NumPy array using that memory.
+
+Locking may or may not be important,<br/>not covered here.
 
 
 ## NumPy shared array
@@ -207,7 +225,6 @@ if __name__ == '__main__':
 
     rows, cols = 10, 10
 
-    # grid = Array(ctypes.c_double, rows*cols, lock=False)
     shared_grid = Array('d', rows * cols, lock=False)
     grid = np.frombuffer(shared_grid)
     grid.shape = (rows, cols)
@@ -260,5 +277,7 @@ if __name__ == '__main__':
 - [mp_demo0.py](./mp_demo0.py)
 - [mp_demo1.py](./mp_demo1.py)
 - [mp_demo2.py](./mp_demo2.py)
+
+
 
 

@@ -41,7 +41,6 @@ if __name__ == '__main__':
 
     rows, cols = 10, 10
 
-    # grid = Array(ctypes.c_double, rows*cols, lock=False)
     shared_grid = Array('d', rows * cols, lock=False)
     grid = np.frombuffer(shared_grid)
     grid.shape = (rows, cols)
