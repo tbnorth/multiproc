@@ -20,7 +20,7 @@ https://tbnorth.github.io/multiproc/
 
 ## Python GIL
 
-You may here / read:
+You may hear / read:
 
 “Python has a Global Interpreter Lock (GIL) which
 prevents it from executing code simultaneously.”
@@ -168,7 +168,7 @@ if __name__ == '__main__':
 ## Sharing an array
 
 ```python
-shared_grid = Array('d', rows * cols, lock=False)`
+shared_grid = Array('d', rows * cols, lock=False)
 ```
 
 allocates an array of type 'd' (double) with enough
