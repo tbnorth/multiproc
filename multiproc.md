@@ -4,6 +4,14 @@ https://tbnorth.github.io/multiproc/
 
 
 
+## Requirements
+
+- Requires NumPy
+- Works in Python 2.7, but these demos only tested in
+  Python 3.6
+
+
+
 ## CPU Loading
 
 ![CPU Loading](img/cpu.png)
@@ -96,9 +104,9 @@ Sub-process 3: 17412
 
 https://abstrusegoose.com/474
 
+<!-- .element: data-state='scrollable' -->
 ![img](img/i_never_would_have_passed_kindergarten.png)
 https://abstrusegoose.com/474
-<!-- .element: data-state='scrollable' -->
 
 
 ## Task queue
@@ -182,6 +190,11 @@ grid.shape = (rows, cols)
 makes a normal NumPy array using that memory.
 
 Locking may or may not be important,<br/>not covered here.
+
+
+## Sharing work
+
+![sharing](img/rows.svg)
 
 
 ## NumPy shared array
@@ -277,7 +290,5 @@ if __name__ == '__main__':
 - [mp_demo0.py](./mp_demo0.py)
 - [mp_demo1.py](./mp_demo1.py)
 - [mp_demo2.py](./mp_demo2.py)
-
-
 
 
