@@ -15,8 +15,8 @@ def proc_queue(queue):
 
 
 def print_number(n):
-    print(n)
     time.sleep(3)
+    print(n)
 
 
 def do_task(task):
@@ -34,6 +34,7 @@ if __name__ == '__main__':
         proc = Process(target=proc_queue, args=(queue,))
         proc.start()
 
+    print("(main process starts)")
     for i in range(10):
         queue.put({'task': 'print_number', 'data': {'n': i}})
 

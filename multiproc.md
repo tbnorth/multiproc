@@ -14,6 +14,12 @@ https://tbnorth.github.io/multiproc/
 
 
 
+## Use case
+
+![Use case](img/usecase.png) <!-- .element width="600" -->
+
+
+
 ## CPU Loading
 
 ![CPU Loading](img/cpu.png)
@@ -64,6 +70,7 @@ coordinate separate processes.
   with `multiprocessing` and communication,
 - Large CPU bound operations, like processing a folder of
   images, process reuse doesn't matter.
+
 
 
 ## Multi-process / main
@@ -119,8 +126,8 @@ def proc_queue(queue):
     print("(sub-process ends)")
 
 def print_number(n):
-    print(n)
     time.sleep(3)
+    print(n)
 
 def do_task(task):
     if task['task'] == 'print_number':
@@ -136,6 +143,7 @@ if __name__ == '__main__':
         proc = Process(target=proc_queue, args=(queue,))
         proc.start()
 
+    print("(main process starts)")
     for i in range(10):
         queue.put({'task': 'print_number', 'data': {'n': i}})
 
@@ -147,21 +155,22 @@ if __name__ == '__main__':
 ## Task queue
 
 ```
-10:35 0
-10:35 1
-10:35 2
-10:35 3
-10:38 4
-10:38 5
-10:38 6
-10:38 7
-10:41 8
-10:41 9
-10:44 (main process ends)
-10:46 (sub-process ends)
-10:46 (sub-process ends)
-10:49 (sub-process ends)
-10:49 (sub-process ends)
+30:09.940990 (main process starts)
+30:12.945799 0
+30:12.946029 3
+30:12.946148 1
+30:12.946409 2
+30:15.949633 4
+30:15.949844 5
+30:15.950095 6
+30:15.950406 7
+30:18.953157 8
+30:18.953462 9
+30:18.953741 (main process ends)
+30:20.950566 (sub-process ends)
+30:20.954619 (sub-process ends)
+30:23.954051 (sub-process ends)
+30:23.954352 (sub-process ends)
 ```
 
 
@@ -175,7 +184,6 @@ if __name__ == '__main__':
 - Pass small messages (instructions) between processes that
   act on shared memory data.  Don't pass data back and forth
   on task queue.
-
 
 
 ## Sharing an array
