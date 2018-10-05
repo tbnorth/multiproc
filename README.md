@@ -12,7 +12,7 @@ To update the .py files into the .md file:
 python3 insert_code.py --markdown multiproc.md \
   --code-slide mp_demo0.py "Multi-process / main" \
   --code-slide mp_demo1.py "Task queue" \
-  --code-slide mp_demo2.py "Numpy shared array" \
+  --code-slide mp_demo2.py "NumPy shared array" \
   >d
 ```
 then `diff multiproc.md d` and `mv d multiproc.md` if it's ok.

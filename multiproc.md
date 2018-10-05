@@ -243,20 +243,28 @@ if __name__ == '__main__':
     grid.shape = (rows, cols)
 
     for i in range(2):
-        proc = Process(target=setup, args=(queue, shared_grid, rows, cols))
+        proc = Process(target=setup,
+            args=(queue, shared_grid, rows, cols))
         proc.start()
 
     start = time.time()
     for i in range(4):
-        queue.put(
-            {'task': 'inc_rows', 'data': {'start': 3 * i, 'end': min(rows, 3 * i + 3)}}
-        )
+        queue.put({
+            'task': 'inc_rows',
+            'data': {
+                 'start': 3 * i,
+                 'end': min(rows, 3 * i + 3)
+            }
+        })
     queue.join()
     print("done in %s" % (time.time() - start))
     answer0 = np.array(grid)
     grid[:] = 0
     start = time.time()
-    queue.put({'task': 'inc_rows', 'data': {'start': 0, 'end': 10}})
+    queue.put({
+        'task': 'inc_rows',
+        'data': {'start': 0, 'end': 10}
+    })
     queue.join()
     print("done in %s" % (time.time() - start))
     answer1 = np.array(grid)

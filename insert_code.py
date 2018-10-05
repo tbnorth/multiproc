@@ -5,6 +5,7 @@ Terry Brown, terrynbrown@gmail.com, Thu Oct  4 16:32:38 2018
 """
 
 import argparse
+import sys
 
 def make_parser():
 
@@ -56,16 +57,20 @@ def insert(text, code, slide):
                 new_lines.append(line)
                 line = lines.pop(0)
             new_lines.append(line)  # copy opening ``` line
-            code = open(code).read().strip()
-            while "\n\n\n" in code:
-                code = code.replace("\n\n\n", "\n\n")
-            new_lines.append(code)
+            text = open(code).read().strip()
+            while "\n\n\n" in text:
+                text = text.replace("\n\n\n", "\n\n")
+            new_lines.append(text)
             while not line.endswith('```'):
                 # drop old code
                 line = lines.pop(0)
             new_lines.append(line)  # copy closing ``` line
         else:
             new_lines.append(line)
+    if placed:
+        sys.stderr.write("Placed %s\n" % code)
+    else:
+        sys.stderr.write("WARNING: NO PLACE FOR %s\n" % code)
 
     return '\n'.join(new_lines)
 
