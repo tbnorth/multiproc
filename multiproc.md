@@ -2,6 +2,8 @@
 
 https://tbnorth.github.io/multiproc/
 
+[use Space to advance slides]
+
 
 
 ## Requirements
@@ -62,16 +64,6 @@ coordinate separate processes.
   with `multiprocessing` and communication,
 - Large CPU bound operations, like processing a folder of
   images, process reuse doesn't matter.
-
-
-## multiprocessing / NumPy
-
-- `multiprocessing` uses separate instances of “python.exe”
-  which can communicate with **expensive** message passing
-  to move information between processes.
-- NumPy supports shared memory for its arrays, so separate
-  programs can operate on the same data.
-
 
 
 ## Multi-process / main
@@ -171,6 +163,19 @@ if __name__ == '__main__':
 10:49 (sub-process ends)
 10:49 (sub-process ends)
 ```
+
+
+## multiprocessing / NumPy
+
+- `multiprocessing` uses separate instances of “python.exe”
+  which can communicate with **expensive** message passing
+  to move information between processes.
+- NumPy supports shared memory for its arrays, so separate
+  programs can operate on the same data.
+- Pass small messages (instructions) between processes that
+  act on shared memory data.  Don't pass data back and forth
+  on task queue.
+
 
 
 ## Sharing an array
@@ -298,5 +303,4 @@ if __name__ == '__main__':
 - [mp_demo0.py](./mp_demo0.py)
 - [mp_demo1.py](./mp_demo1.py)
 - [mp_demo2.py](./mp_demo2.py)
-
 
